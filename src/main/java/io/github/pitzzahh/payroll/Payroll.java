@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import io.github.pitzzahh.payroll.util.Util;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
 import org.slf4j.LoggerFactory;
@@ -48,13 +49,18 @@ public class Payroll extends Application {
         primaryStage.initStyle(StageStyle.UNIFIED);
         primaryStage.getIcons().add(new Image(requireNonNull(Payroll.class.getResourceAsStream("img/ico.png"), "Icon not found")));
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.centerOnScreen();
         primaryStage.toFront();
         primaryStage.setTitle("Payroll Application");
         primaryStage.show();
-        Util.getChoiceBox(parent)
-                .getItems()
-                .addAll(FXCollections.observableArrayList(List.of(Month.values())));
+
+        ChoiceBox<Object> hoursWorkedChoiceBox = Util.getChoiceBox(parent, 1);
+        hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(List.of(Month.values())));
+        hoursWorkedChoiceBox.getSelectionModel().selectFirst();
+        ChoiceBox<Object> absencesChoiceBox = Util.getChoiceBox(parent, 3);
+        absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(List.of(Month.values())));
+        absencesChoiceBox.getSelectionModel().selectFirst();
         LOGGER.info("Application Started");
     }
 

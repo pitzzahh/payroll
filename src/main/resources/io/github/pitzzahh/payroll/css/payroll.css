@@ -27,7 +27,7 @@
     -fx-font-weight: bold;
 }
 
-.text-field-label {
+.text-field {
     -fx-font-family: "JetBrains Mono";
     -fx-text-fill: #000;
     -fx-label-padding: 0 10 0 0;
@@ -42,4 +42,21 @@
     -fx-font-family: "JetBrains Mono";
     -fx-text-fill: #000;
     -fx-font-size: 15px;
+}
+
+.choice-box:hover {
+    -fx-cursor: hand;
+}
+
+.save-button {
+    -fx-font-family: "JetBrains Mono Light";
+    -fx-text-fill: #000;
+    -fx-font-size: 15px;
+    -fx-background-radius: 5;
+}
+
+.save-button:hover {
+    -fx-background-color: #264653;
+    -fx-text-fill: #ffff;
+    -fx-cursor: hand;
 }
