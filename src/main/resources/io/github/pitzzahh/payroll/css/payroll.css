@@ -56,7 +56,13 @@
 }
 
 .save-button:hover {
+    -fx-font-family: "JetBrains Mono Medium";
     -fx-background-color: #264653;
     -fx-text-fill: #ffff;
     -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.save-button:pressed {
+    -fx-opacity: 0.5;
 }

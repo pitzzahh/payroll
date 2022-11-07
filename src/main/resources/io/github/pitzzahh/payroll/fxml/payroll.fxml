@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
+<AnchorPane minHeight="684.0" minWidth="1301.0" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
    <BorderPane layoutX="35.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <top>
          <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="600.0" styleClass="header" stylesheets="@../css/payroll.css" BorderPane.alignment="CENTER">
@@ -44,9 +44,9 @@
                            <VBox.margin>
                               <Insets bottom="4.0" left="10.0" top="10.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Employee Name">
+                           <Label prefHeight="39.0" prefWidth="254.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Employee Name">
                               <HBox.margin>
-                                 <Insets right="39.0" />
+                                 <Insets />
                               </HBox.margin>
                            </Label>
                            <TextField prefHeight="25.0" prefWidth="231.0" promptText="Enter employee name" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
@@ -59,22 +59,22 @@
                            <VBox.margin>
                               <Insets left="10.0" top="10.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hours Worked">
+                           <Label prefHeight="39.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hours Worked Per Month">
                               <HBox.margin>
-                                 <Insets right="54.0" />
+                                 <Insets />
                               </HBox.margin>
                            </Label>
-                           <ChoiceBox onMouseClicked="#onSelection" onMouseEntered="#onMouseEnteredHoursWorked" onMouseExited="#onMouseExitedHoursWorked" onMousePressed="#onMousePressedHoursWorked" onMouseReleased="#onMouseReleaseHoursWorked" prefWidth="150.0">
+                           <ChoiceBox prefHeight="31.0" prefWidth="166.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField prefHeight="25.0" prefWidth="190.0" promptText="Enter Hours Worked" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField onMouseEntered="#onMouseEnteredHoursWorkedInput" prefHeight="31.0" prefWidth="125.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
                            </TextField>
-                           <Button mnemonicParsing="false" styleClass="save-button" stylesheets="@../css/payroll.css" text="SAVE">
+                           <Button mnemonicParsing="false" onMouseClicked="#onSaveHoursWorked" styleClass="save-button" stylesheets="@../css/payroll.css" text="SAVE">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -84,9 +84,9 @@
                            <VBox.margin>
                               <Insets bottom="4.0" left="10.0" top="10.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hourly Rate">
+                           <Label prefHeight="39.0" prefWidth="254.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hourly Rate">
                               <HBox.margin>
-                                 <Insets right="79.0" />
+                                 <Insets />
                               </HBox.margin>
                            </Label>
                            <TextField prefHeight="25.0" prefWidth="190.0" promptText="Enter hourly rate" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
@@ -99,21 +99,26 @@
                            <VBox.margin>
                               <Insets bottom="4.0" left="10.0" top="10.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Absences Per Month">
+                           <Label prefHeight="39.0" prefWidth="241.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Absences Per Month">
                               <HBox.margin>
-                                 <Insets />
+                                 <Insets right="11.0" />
                               </HBox.margin>
                            </Label>
-                           <ChoiceBox onMouseEntered="#onMouseEnteredAbsencesChoiceBox" prefWidth="150.0">
+                           <ChoiceBox prefHeight="31.0" prefWidth="166.0" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField prefHeight="25.0" prefWidth="190.0" promptText="Enter Number of Hours Absent" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField prefHeight="25.0" prefWidth="190.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
                            </TextField>
+                           <Button mnemonicParsing="false" styleClass="save-button" stylesheets="@../css/payroll.css" text="SAVE">
+                              <HBox.margin>
+                                 <Insets right="10.0" />
+                              </HBox.margin>
+                           </Button>
                         </HBox>
                      </VBox>
                   </center>
