@@ -49,7 +49,6 @@ public class Payroll extends Application {
         primaryStage.initStyle(StageStyle.UNIFIED);
         primaryStage.getIcons().add(new Image(requireNonNull(Payroll.class.getResourceAsStream("img/ico.png"), "Icon not found")));
         primaryStage.setScene(scene);
-        primaryStage.setMaximized(true);
         primaryStage.centerOnScreen();
         primaryStage.toFront();
         primaryStage.setTitle("Payroll Application");
