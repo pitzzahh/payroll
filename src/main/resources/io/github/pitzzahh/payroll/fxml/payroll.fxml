@@ -109,31 +109,127 @@
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField prefHeight="25.0" prefWidth="190.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField onMouseEntered="#onMouseEnteredAbsencesPerMonth" prefHeight="25.0" prefWidth="190.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
                            </TextField>
-                           <Button mnemonicParsing="false" styleClass="save-button" stylesheets="@../css/payroll.css" text="SAVE">
+                           <Button mnemonicParsing="false" onMouseClicked="#onSaveAbsences" styleClass="save-button" stylesheets="@../css/payroll.css" text="SAVE">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
                            </Button>
+                        </HBox>
+                        <HBox prefHeight="349.0" prefWidth="901.0" styleClass="result" stylesheets="@../css/payroll.css" VBox.vgrow="ALWAYS">
+                           <VBox prefHeight="201.0" prefWidth="891.0" HBox.hgrow="ALWAYS">
+                              <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="881.0" styleClass="vbox-results" stylesheets="@../css/payroll.css">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Salary Per Month:" />
+                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin></Label>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="15.0" prefHeight="49.0" prefWidth="881.0" styleClass="vbox-results" stylesheets="@../css/payroll.css">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Total Absences:">
+                                    <padding>
+                                       <Insets left="22.0" />
+                                    </padding>
+                                 </Label>
+                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin></Label>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="89.0" prefHeight="49.0" prefWidth="881.0" styleClass="vbox-results" stylesheets="@../css/payroll.css">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Total Tardiness:">
+                                    <padding>
+                                       <Insets left="10.0" />
+                                    </padding>
+                                 </Label>
+                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin></Label>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="163.0" prefHeight="49.0" prefWidth="881.0" styleClass="vbox-results" stylesheets="@../css/payroll.css">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Gross Salary:">
+                                    <padding>
+                                       <Insets left="45.0" />
+                                    </padding>
+                                 </Label>
+                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="237.0" prefHeight="49.0" prefWidth="881.0" styleClass="vbox-results" stylesheets="@../css/payroll.css">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Net Pay:">
+                                    <padding>
+                                       <Insets left="110.0" />
+                                    </padding>
+                                 </Label>
+                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin>
+                                 </Label>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="buttons-hBox" stylesheets="@../css/payroll.css" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <Button mnemonicParsing="false" text="Calculate" />
+                              </HBox>
+                           </VBox>
                         </HBox>
                      </VBox>
                   </center>
                </BorderPane>
             </center>
             <BorderPane.margin>
-               <Insets right="200.0" />
+               <Insets />
             </BorderPane.margin>
          </BorderPane>
       </center>
       <right>
-         <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <right>
-               <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-            </right>
+         <BorderPane prefHeight="614.0" prefWidth="236.0" styleClass="right-border-pane" stylesheets="@../css/payroll.css" BorderPane.alignment="CENTER">
+            <padding>
+               <Insets left="400.0" />
+            </padding>
+            <center>
+               <VBox alignment="CENTER" prefHeight="612.0" prefWidth="0.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
+            </center>
          </BorderPane>
       </right>
    </BorderPane>
