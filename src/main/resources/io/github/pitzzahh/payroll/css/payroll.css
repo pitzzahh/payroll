@@ -66,3 +66,38 @@
 .save-button:pressed {
     -fx-opacity: 0.5;
 }
+
+.result {
+    -fx-background-color: #264653;
+    -fx-border-width: 5 ;
+    -fx-border-color: #006d77;
+    -fx-border-radius: 20;
+    -fx-background-radius: 30;
+}
+
+.vbox-results {
+    -fx-background-color: #a2d2ff;
+    -fx-border-radius: 15;
+    -fx-background-radius: 20;
+}
+
+.result-labels {
+    -fx-font-family: "JetBrains Mono";
+    -fx-text-fill: #000000FF;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.result-text-field {
+    -fx-font-family: "JetBrains Mono";
+    -fx-text-fill: #000;
+    -fx-label-padding: 0 10 0 0;
+    -fx-font-size: 15px;
+}
+
+.salary {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-text-fill: #ffff;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
