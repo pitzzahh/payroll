@@ -107,7 +107,7 @@
 */
 .output {
     -fx-font-family: "JetBrains Mono Medium";
-    -fx-text-fill: #ffff;
+    -fx-text-fill: #000000FF;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
@@ -121,7 +121,9 @@
 .calculate-button {
     -fx-background-radius: 10;
     -fx-border-radius: 10;
+    -fx-background-color: #A2D2FF;
     -fx-font-family: "JetBrains Mono Medium";
     -fx-text-fill: #000;
     -fx-font-size: 15px;
+    -fx-font-weight: bold;
 }

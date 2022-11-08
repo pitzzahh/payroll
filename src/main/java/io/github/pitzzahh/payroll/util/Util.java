@@ -2,21 +2,19 @@ package io.github.pitzzahh.payroll.util;
 
 import io.github.pitzzahh.util.utilities.validation.Validator;
 import static io.github.pitzzahh.payroll.Payroll.getLogger;
-import javafx.scene.control.SelectionModel;
 import io.github.pitzzahh.payroll.Payroll;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import static java.lang.String.format;
-import javafx.scene.control.Button;
 import java.util.function.Supplier;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.util.Duration;
 import javafx.scene.Parent;
 import javafx.scene.Node;
-import java.util.*;
 import java.time.Month;
+import java.util.*;
 
 /**
  * Utility class
@@ -77,13 +75,35 @@ public interface Util {
         else if (selectedItem.equals(Month.DECEMBER)) textField.setPromptText(prompt);
     }
 
-    static void addHours(Object month, String hours, boolean isAbsences) {
+    static boolean addHours(Object month, String hours, boolean isAbsences) {
         boolean isNumber = Validator.isWholeNumber().or(Validator.isDecimalNumber()).test(hours.trim());
         if (isNumber || hours.trim().isEmpty()) {
             if (isAbsences) Fields.hoursAbsences.put(month, hours);
-            else  Fields.hoursWorkedPerMonth.put(month, hours);
+            else Fields.hoursWorkedPerMonth.put(month, hours);
+            return true;
         }
-        else Payroll.getLogger().error(format("HOURS ON MONTH %s is %s IS NOT A NUMBER", month, hours));
+        else {
+            Tooltip tooltip = initToolTip("Please Enter a Number");
+            tooltip.setAutoHide(true);
+            tooltip.setStyle("-fx-background-color: #003049; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-weight: bold; " +
+                    "-fx-font-family: Jetbrains Mono;" +
+                    "-fx-font-size: 15px;");
+            tooltip.show(Payroll.getStage().getScene().getWindow());
+            getLogger().error(format("HOURS ON MONTH %s is %s IS NOT A NUMBER", month, hours));
+            return false;
+        }
+    }
+
+    /**
+     * Sets the tooltip for the specified control.
+     * @param tip the tooltip.
+     * @return the tooltip.
+     * @see Tooltip
+     */
+    static Tooltip initToolTip(String tip) {
+        return new Tooltip(tip);
     }
 
     static Map<Object, String> getHoursWorkedPerMonth() {

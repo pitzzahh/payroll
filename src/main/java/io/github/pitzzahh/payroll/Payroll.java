@@ -2,6 +2,7 @@ package io.github.pitzzahh.payroll;
 
 import static java.util.Objects.requireNonNull;
 import io.github.pitzzahh.payroll.util.Util;
+import io.github.pitzzahh.util.utilities.Print;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
@@ -22,8 +23,14 @@ public class Payroll extends Application {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Payroll.class);
 
+    private static Stage stage;
+
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static Stage getStage() {
+        return stage;
     }
 
     /**
@@ -43,15 +50,16 @@ public class Payroll extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
         Parent parent = FXMLLoader.load(requireNonNull(Payroll.class.getResource("fxml/payroll.fxml"), "cannot find payroll.fxml file"));
         Scene scene = new Scene(parent);
-        primaryStage.initStyle(StageStyle.UNIFIED);
-        primaryStage.getIcons().add(new Image(requireNonNull(Payroll.class.getResourceAsStream("img/ico.png"), "Icon not found")));
-        primaryStage.setScene(scene);
-        primaryStage.centerOnScreen();
-        primaryStage.toFront();
-        primaryStage.setTitle("Payroll Application");
-        primaryStage.show();
+        stage.initStyle(StageStyle.UNIFIED);
+        stage.getIcons().add(new Image(requireNonNull(Payroll.class.getResourceAsStream("img/ico.png"), "Icon not found")));
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.toFront();
+        stage.setTitle("Payroll Application");
+        stage.show();
 
         ChoiceBox<Object> hoursWorkedChoiceBox = Util.getChoiceBox(parent, 1);
         hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(List.of(Month.values())));

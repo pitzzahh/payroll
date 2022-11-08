@@ -3,17 +3,33 @@ package io.github.pitzzahh.payroll.controllers;
 
 import static io.github.pitzzahh.payroll.Payroll.getLogger;
 import static io.github.pitzzahh.payroll.util.Util.*;
+import static java.lang.Double.parseDouble;
+import static java.lang.String.format;
+import static java.lang.String.valueOf;
+
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 
+import java.util.Currency;
+
 public class PayrollController {
 
     @FXML
-    public TextField employeeName;
+    public TextField employeeNameInput;
 
     @FXML
     public TextField hourlyRate;
+
+    @FXML
+    public Label salary;
+
+    @FXML
+    public Label employeeName;
+
+    @FXML
+    public Label absences;
 
     @FXML
     public void onMouseEnteredHoursWorkedInput(MouseEvent mouseEvent) {
@@ -50,11 +66,11 @@ public class PayrollController {
         Object selectedItem = getSelectionModel(mouseEvent, true).getSelectedItem();
         TextField textField = getTextField(mouseEvent, true);
         String hoursWorked = textField.getText().trim();
-        addHours(selectedItem, hoursWorked, false);
+        boolean isValidHours = addHours(selectedItem, hoursWorked, false);
         System.out.println(getHoursWorkedPerMonth());
         textField.setText("");
-        getSelectionModel(mouseEvent, true)
-                .select(getSelectionModel(mouseEvent, true).getSelectedIndex() + 1);
+        if (isValidHours) getSelectionModel(mouseEvent, true)
+                    .select(getSelectionModel(mouseEvent, true).getSelectedIndex() + 1);
     }
 
     @FXML
@@ -67,10 +83,10 @@ public class PayrollController {
         Object selectedItem = getSelectionModel(mouseEvent, true).getSelectedItem();
         TextField textField = getTextField(mouseEvent, true);
         String absentHours = textField.getText().trim();
-        addHours(selectedItem, absentHours, true);
+        boolean isValidHours = addHours(selectedItem, absentHours, true);
         System.out.println(getHoursAbsencesPerMonth());
         textField.setText("");
-        getSelectionModel(mouseEvent, true)
+        if (isValidHours) getSelectionModel(mouseEvent, true)
                 .select(getSelectionModel(mouseEvent, true).getSelectedIndex() + 1);
     }
 
@@ -81,7 +97,14 @@ public class PayrollController {
                 .filter(e -> !e.isEmpty())
                 .mapToInt(Integer::parseInt)
                 .sum();
-
+        employeeName.setText(employeeNameInput.getText().trim());
+        String peso = Currency.getInstance("PHP").getSymbol();
+        salary.setText(peso + format("%.2f", parseDouble(hourlyRate.getText().trim()) * sum));
+        absences.setText(valueOf(getHoursAbsencesPerMonth().values()
+                .stream()
+                .filter(e -> !e.isEmpty())
+                .mapToInt(Integer::parseInt)
+                .sum()));
         getLogger().debug("HOURLY RATE: " + hourlyRate.getText());
         getLogger().debug("SUM: " + sum);
     }
