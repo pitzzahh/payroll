@@ -1,21 +1,20 @@
 package io.github.pitzzahh.payroll.util;
 
-import static io.github.pitzzahh.payroll.Payroll.getLogger;
-import static java.lang.String.format;
-
-import io.github.pitzzahh.payroll.Payroll;
 import io.github.pitzzahh.util.utilities.validation.Validator;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import static io.github.pitzzahh.payroll.Payroll.getLogger;
 import javafx.scene.control.SelectionModel;
+import io.github.pitzzahh.payroll.Payroll;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import static java.lang.String.format;
+import javafx.scene.control.Button;
+import java.util.function.Supplier;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.Parent;
 import javafx.scene.Node;
-
 import java.util.*;
 import java.time.Month;
 
@@ -114,4 +113,6 @@ public interface Util {
 class Fields {
     static Map<Object, String> hoursWorkedPerMonth = new Hashtable<>();
     static Map<Object, String> hoursAbsences = new Hashtable<>();
+
+    static final Supplier<Double> DEDUCTIONS = () -> 600.0;
 }
