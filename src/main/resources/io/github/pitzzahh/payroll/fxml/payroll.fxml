@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="684.0" minWidth="1301.0" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
+<AnchorPane minHeight="627.0" minWidth="1016.0" prefHeight="627.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
    <BorderPane layoutX="35.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <top>
          <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="600.0" styleClass="header" stylesheets="@../css/payroll.css" BorderPane.alignment="CENTER">
@@ -35,7 +35,7 @@
          </HBox>
       </top>
       <center>
-         <BorderPane BorderPane.alignment="CENTER">
+         <BorderPane prefHeight="614.0" BorderPane.alignment="CENTER">
             <center>
                <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                   <center>
@@ -222,15 +222,5 @@
             </BorderPane.margin>
          </BorderPane>
       </center>
-      <right>
-         <BorderPane prefHeight="614.0" prefWidth="236.0" styleClass="right-border-pane" stylesheets="@../css/payroll.css" BorderPane.alignment="CENTER">
-            <padding>
-               <Insets left="400.0" />
-            </padding>
-            <center>
-               <VBox alignment="CENTER" prefHeight="612.0" prefWidth="0.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER" />
-            </center>
-         </BorderPane>
-      </right>
    </BorderPane>
 </AnchorPane>
