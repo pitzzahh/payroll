@@ -56,7 +56,6 @@ public interface Util {
 
     static TextField getTextField(MouseEvent mouseEvent, boolean isFromSaveButton) {
         HBox parent;
-        // HBox parent = (HBox) ((Button) mouseEvent.getSource()).getParent();
         if (isFromSaveButton) parent = (HBox) ((Button) mouseEvent.getSource()).getParent();
         else parent = (HBox) ((TextField) mouseEvent.getSource()).getParent();
         return (TextField) parent.getChildren().get(2);
@@ -79,26 +78,40 @@ public interface Util {
         else if (selectedItem.equals(Month.DECEMBER)) textField.setPromptText(prompt);
     }
 
-    static void addHoursWorked(Object month, String hours) {
+    static void addHours(Object month, String hours, boolean isAbsences) {
         boolean isNumber = Validator.isWholeNumber().or(Validator.isDecimalNumber()).test(hours.trim());
-        if (isNumber || hours.trim().isEmpty()) Fields.hoursWorkedPerMonth.put(month, hours);
-        else Payroll.getLogger().error(format("HOURS WORKED ON MONTH %s is %s IS NOT A NUMBER", month, hours));
+        if (isNumber || hours.trim().isEmpty()) {
+            if (isAbsences) Fields.hoursAbsences.put(month, hours);
+            else  Fields.hoursWorkedPerMonth.put(month, hours);
+        }
+        else Payroll.getLogger().error(format("HOURS ON MONTH %s is %s IS NOT A NUMBER", month, hours));
     }
 
     static Map<Object, String> getHoursWorkedPerMonth() {
         return Fields.hoursWorkedPerMonth;
     }
 
-    static void putCurrentHoursWorkedOfMonthIfPresent(Object selectedItem, TextField textField) {
-        Optional<String> hoursWorked = Fields.hoursWorkedPerMonth.entrySet()
+    static Map<Object, String> getHoursAbsencesPerMonth() {
+        return Fields.hoursAbsences;
+    }
+
+    static void putCurrentHoursWorkedOfMonthIfPresent(Object selectedItem, TextField textField, boolean isAbsences) {
+        Optional<String> hours;
+        if (isAbsences) hours = Fields.hoursAbsences.entrySet()
                 .stream()
                 .filter(e -> e.getKey().equals(selectedItem))
                 .map(Map.Entry::getValue)
                 .findAny();
-        getLogger().debug("HOURS WORKED PRESENT: " + hoursWorked.isPresent());
-        hoursWorked.ifPresentOrElse(textField::setText, () -> textField.setText(""));
+        else hours = Fields.hoursWorkedPerMonth.entrySet()
+                .stream()
+                .filter(e -> e.getKey().equals(selectedItem))
+                .map(Map.Entry::getValue)
+                .findAny();
+        getLogger().debug("HOURS PRESENT: " + hours.isPresent());
+        hours.ifPresentOrElse(textField::setText, () -> textField.setText(""));
     }
 }
 class Fields {
     static Map<Object, String> hoursWorkedPerMonth = new Hashtable<>();
+    static Map<Object, String> hoursAbsences = new Hashtable<>();
 }
