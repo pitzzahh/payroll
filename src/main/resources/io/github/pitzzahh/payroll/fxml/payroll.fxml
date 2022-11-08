@@ -49,7 +49,7 @@
                                  <Insets />
                               </HBox.margin>
                            </Label>
-                           <TextField prefHeight="25.0" prefWidth="231.0" promptText="Enter employee name" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="employeeName" prefHeight="25.0" prefWidth="231.0" promptText="Enter employee name" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -89,7 +89,7 @@
                                  <Insets />
                               </HBox.margin>
                            </Label>
-                           <TextField prefHeight="25.0" prefWidth="190.0" promptText="Enter hourly rate" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hourlyRate" prefHeight="25.0" prefWidth="190.0" promptText="Enter hourly rate" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -209,7 +209,7 @@
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>
-                                 <Button mnemonicParsing="false" text="Calculate" />
+                                 <Button mnemonicParsing="false" onMouseClicked="#onCalculate" prefHeight="56.0" prefWidth="243.0" styleClass="calculate-button" stylesheets="@../css/payroll.css" text="Calculate" />
                               </HBox>
                            </VBox>
                         </HBox>

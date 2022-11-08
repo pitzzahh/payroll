@@ -6,6 +6,13 @@
 .header {
     -fx-background-color: #264653;
 }
+.button:hover {
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-background-color: #2a9d8f;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+}
 
 .header-title {
     -fx-font-family: "JetBrains Mono Medium";
@@ -63,7 +70,7 @@
     -fx-font-weight: bold;
 }
 
-.save-button:pressed {
+.button:pressed {
     -fx-opacity: 0.5;
 }
 
@@ -109,4 +116,12 @@
     -fx-background-color: #006d77;
     -fx-border-radius: 15;
     -fx-background-radius: 20;
+}
+
+.calculate-button {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-font-family: "JetBrains Mono Medium";
+    -fx-text-fill: #000;
+    -fx-font-size: 15px;
 }
