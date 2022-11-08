@@ -69,7 +69,7 @@
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField onMouseEntered="#onMouseEnteredHoursWorkedInput" prefHeight="31.0" prefWidth="125.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hoursWorkedTextField" onKeyTyped="#onHoursWorkedEnter" onMouseEntered="#onMouseEnteredHoursWorkedInput" prefHeight="31.0" prefWidth="125.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -109,7 +109,7 @@
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField onMouseEntered="#onMouseEnteredAbsencesPerMonth" prefHeight="25.0" prefWidth="190.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hoursAbsencesTextField" onKeyTyped="#onAbsencesEnter" onMouseEntered="#onMouseEnteredAbsencesPerMonth" prefHeight="25.0" prefWidth="190.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -182,7 +182,7 @@
                                        <Insets left="10.0" />
                                     </padding>
                                  </Label>
-                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                 <Label fx:id="tardiness" styleClass="output" stylesheets="@../css/payroll.css">
                                     <HBox.margin>
                                        <Insets left="10.0" />
                                     </HBox.margin></Label>
@@ -199,7 +199,7 @@
                                        <Insets left="45.0" />
                                     </padding>
                                  </Label>
-                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                 <Label fx:id="grossSalary" styleClass="output" stylesheets="@../css/payroll.css">
                                     <HBox.margin>
                                        <Insets left="10.0" />
                                     </HBox.margin>
@@ -217,20 +217,25 @@
                                        <Insets left="110.0" />
                                     </padding>
                                  </Label>
-                                 <Label styleClass="output" stylesheets="@../css/payroll.css">
+                                 <Label fx:id="netPay" styleClass="output" stylesheets="@../css/payroll.css">
                                     <HBox.margin>
                                        <Insets left="10.0" />
                                     </HBox.margin>
                                  </Label>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="996.0" styleClass="buttons-hBox" stylesheets="@../css/payroll.css" VBox.vgrow="ALWAYS">
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="996.0" styleClass="buttons-hBox" stylesheets="@../css/payroll.css" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
-                                    <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>
-                                 <Button mnemonicParsing="false" onMouseClicked="#onCalculate" styleClass="calculate-button" stylesheets="@../css/payroll.css" text="Calculate" HBox.hgrow="ALWAYS">
+                                 <Button mnemonicParsing="false" onMouseClicked="#onCalculate" prefHeight="43.0" prefWidth="85.0" stylesheets="@../css/payroll.css" text="Calculate" HBox.hgrow="ALWAYS">
                                     <HBox.margin>
-                                       <Insets bottom="5.0" top="5.0" />
+                                       <Insets right="10.0" />
                                     </HBox.margin></Button>
+                                 <Button fx:id="resetButton" layoutX="466.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#onReset" prefHeight="43.0" prefWidth="85.0" stylesheets="@../css/payroll.css" text="Reset">
+                                    <HBox.margin>
+                                       <Insets left="10.0" />
+                                    </HBox.margin>
+                                 </Button>
                               </HBox>
                            </VBox>
                         </HBox>

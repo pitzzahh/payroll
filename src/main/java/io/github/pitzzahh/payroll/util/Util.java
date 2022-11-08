@@ -6,11 +6,14 @@ import io.github.pitzzahh.payroll.Payroll;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import static java.lang.String.format;
+
+import java.text.NumberFormat;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.*;
-import javafx.util.Duration;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 import java.time.Month;
@@ -74,7 +77,6 @@ public interface Util {
         else if (selectedItem.equals(Month.NOVEMBER)) textField.setPromptText(prompt);
         else if (selectedItem.equals(Month.DECEMBER)) textField.setPromptText(prompt);
     }
-
     static boolean addHours(Object month, String hours, boolean isAbsences) {
         boolean isNumber = Validator.isWholeNumber().or(Validator.isDecimalNumber()).test(hours.trim());
         if (isNumber || hours.trim().isEmpty()) {
@@ -129,10 +131,42 @@ public interface Util {
         getLogger().debug("HOURS PRESENT: " + hours.isPresent());
         hours.ifPresentOrElse(textField::setText, () -> textField.setText(""));
     }
+
+    static int getOverTimeHours() {
+        return Fields.hoursWorkedPerMonth.values()
+                .stream()
+                .filter(s -> !s.isEmpty())
+                .mapToInt(Integer::parseInt)
+                .filter(i -> i > 8)
+                .map(i -> i - 8)
+                .sum();
+    }
+
+    static BiFunction<Double, Integer, Double> getOverTimePay() {
+        return Fields.overTimePay;
+    }
+
+    static double getDeductions() {
+        return Fields.DEDUCTIONS.get();
+    }
+
+    static String getPesoSign() {
+        return Fields.PESO_SIGN.get();
+    }
+
+    static NumberFormat formatting() {
+        return Fields.NUMBER_FORMAT.get();
+    }
 }
 class Fields {
     static Map<Object, String> hoursWorkedPerMonth = new Hashtable<>();
     static Map<Object, String> hoursAbsences = new Hashtable<>();
 
     static final Supplier<Double> DEDUCTIONS = () -> 600.0;
+
+    static final BiFunction<Double, Integer, Double> overTimePay = (hourlyRate, overTimeHours) -> (hourlyRate * 1.25) * overTimeHours;
+
+    static final Supplier<String> PESO_SIGN = () -> Currency.getInstance("PHP").getSymbol();
+
+    static final Supplier<NumberFormat> NUMBER_FORMAT = NumberFormat::getInstance;
 }

@@ -4,15 +4,16 @@ package io.github.pitzzahh.payroll.controllers;
 import static io.github.pitzzahh.payroll.Payroll.getLogger;
 import static io.github.pitzzahh.payroll.util.Util.*;
 import static java.lang.Double.parseDouble;
+import io.github.pitzzahh.payroll.Payroll;
 import static java.lang.String.format;
-import static java.lang.String.valueOf;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import java.util.regex.Pattern;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
-
-import java.util.Currency;
 
 public class PayrollController {
 
@@ -32,6 +33,24 @@ public class PayrollController {
     public Label absences;
 
     @FXML
+    public Label tardiness;
+
+    @FXML
+    public Label grossSalary;
+
+    @FXML
+    public Label netPay;
+
+    @FXML
+    public Button resetButton;
+
+    @FXML
+    public TextField hoursWorkedTextField;
+
+    @FXML
+    public TextField hoursAbsencesTextField;
+
+    @FXML
     public void onMouseEnteredHoursWorkedInput(MouseEvent mouseEvent) {
         logic(mouseEvent, false);
     }
@@ -46,7 +65,7 @@ public class PayrollController {
                 .getSelectedItem();
         TextField textField = getTextField(mouseEvent, false);
         getLogger().debug("SELECTED ITEM: " + selectedItem);
-        setTextFieldText(selectedItem, textField, false);
+        setTextFieldText(selectedItem, textField, isAbsences);
         putCurrentHoursWorkedOfMonthIfPresent(
                 getSelectionModel(
                         mouseEvent,
@@ -90,22 +109,105 @@ public class PayrollController {
                 .select(getSelectionModel(mouseEvent, true).getSelectedIndex() + 1);
     }
 
+    @FXML
     public void onCalculate(MouseEvent mouseEvent) {
-        getLogger().debug("NAME: " + employeeName.getText());
-        int sum = getHoursWorkedPerMonth().values()
+        mouseEvent.consume();
+        employeeName.setText(employeeNameInput.getText().trim());
+
+        final int hoursWorked = getHoursWorkedPerMonth().values()
                 .stream()
                 .filter(e -> !e.isEmpty())
                 .mapToInt(Integer::parseInt)
                 .sum();
-        employeeName.setText(employeeNameInput.getText().trim());
-        String peso = Currency.getInstance("PHP").getSymbol();
-        salary.setText(peso + format("%.2f", parseDouble(hourlyRate.getText().trim()) * sum));
-        absences.setText(valueOf(getHoursAbsencesPerMonth().values()
-                .stream()
-                .filter(e -> !e.isEmpty())
-                .mapToInt(Integer::parseInt)
-                .sum()));
-        getLogger().debug("HOURLY RATE: " + hourlyRate.getText());
-        getLogger().debug("SUM: " + sum);
+
+        final String totalHourlyRate = hourlyRate.getText().trim();
+
+        final boolean isValidHourlyRate = Pattern.compile("^[0-9]+(\\.[0-9]{1,2})?$")
+                .matcher(totalHourlyRate)
+                .matches();
+
+        if (isValidHourlyRate) {
+            final double hourlyRate = parseDouble(totalHourlyRate);
+
+            double totalSalary = hourlyRate * hoursWorked;
+
+            salary.setText(getPesoSign() + format("%s", formatting().format(totalSalary)));
+
+            final int totalAbsences = getHoursAbsencesPerMonth().values()
+                    .stream()
+                    .filter(e -> !e.isEmpty())
+                    .mapToInt(Integer::parseInt)
+                    .sum();
+
+            absences.setText(format("%d hours", totalAbsences));
+
+            double totalTardiness = totalHourlyRate.isEmpty() ? 0 : (hourlyRate * (totalAbsences / 60F));
+
+            tardiness.setText(getPesoSign() + format("%s", formatting().format(totalTardiness)));
+
+            final double overTimePay = getOverTimePay().apply(totalSalary, getOverTimeHours());
+
+            getLogger().debug("OVERTIME PAY: " + overTimePay);
+
+            final double grossPay = (totalSalary + overTimePay) - totalTardiness;
+
+            grossSalary.setText(getPesoSign() + format("%s", formatting().format(grossPay)));
+
+            double totalNetPay = grossPay - getDeductions();
+
+            netPay.setText(getPesoSign() + format("%s", formatting().format(totalNetPay)));
+
+        } else {
+            Tooltip tooltip = initToolTip("Cannot calculate because of invalid hourly rate.");
+            tooltip.setAutoHide(true);
+            tooltip.setStyle("-fx-background-color: #003049; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-weight: bold; " +
+                    "-fx-font-family: Jetbrains Mono;" +
+                    "-fx-font-size: 15px;");
+            tooltip.show(Payroll.getStage().getScene().getWindow());
+        }
+    }
+
+    /**
+     * Resets everything.
+     * @param event the button event.
+     */
+    @FXML
+    public void onReset(MouseEvent event) {
+        event.consume();
+        getHoursWorkedPerMonth().clear();
+        getHoursAbsencesPerMonth().clear();
+
+        employeeNameInput.clear();
+        hoursWorkedTextField.clear();
+        hourlyRate.clear();
+        hoursAbsencesTextField.clear();
+
+        employeeName.setText("");
+        salary.setText("");
+        absences.setText("");
+        tardiness.setText("");
+        grossSalary.setText("");
+        netPay.setText("");
+
+        ChoiceBox<Object> hoursWorkedChoiceBox = getChoiceBox(Payroll.getStage().getScene().getRoot(), 1);
+        ChoiceBox<Object> absencesChoiceBox = getChoiceBox(Payroll.getStage().getScene().getRoot(), 3);
+        hoursWorkedChoiceBox.getSelectionModel().selectFirst();
+        absencesChoiceBox.getSelectionModel().selectFirst();
+    }
+
+    @FXML
+    public void onHoursWorkedEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            onSaveHoursWorked(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true, true, true, true, true, true, true, null));
+        }
+    }
+
+    @FXML
+    public void onAbsencesEnter(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            onSaveAbsences(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true, true, true, true, true, true, true, null));
+        }
     }
 }
