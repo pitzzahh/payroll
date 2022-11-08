@@ -95,9 +95,20 @@
     -fx-font-size: 15px;
 }
 
-.salary {
+.output {
     -fx-font-family: "JetBrains Mono Medium";
     -fx-text-fill: #ffff;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
+}
+
+.buttons-hBox {
+    -fx-background-color: #006d77;
+    -fx-border-radius: 15;
+    -fx-background-radius: 20;
+}
+
+.right-border-pane {
+    -fx-background-color: #006D77;
+    -fx-border-color: #006D77;
 }
