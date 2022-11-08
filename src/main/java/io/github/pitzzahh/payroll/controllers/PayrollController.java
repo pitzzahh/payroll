@@ -1,13 +1,19 @@
 package io.github.pitzzahh.payroll.controllers;
 
 
+import static io.github.pitzzahh.payroll.Payroll.getLogger;
 import static io.github.pitzzahh.payroll.util.Util.*;
-import io.github.pitzzahh.payroll.Payroll;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 
 public class PayrollController {
+
+    @FXML
+    public TextField employeeName;
+
+    @FXML
+    public TextField hourlyRate;
 
     @FXML
     public void onMouseEnteredHoursWorkedInput(MouseEvent mouseEvent) {
@@ -23,7 +29,7 @@ public class PayrollController {
         Object selectedItem = getSelectionModel(mouseEvent, false)
                 .getSelectedItem();
         TextField textField = getTextField(mouseEvent, false);
-        Payroll.getLogger().debug("SELECTED ITEM: " + selectedItem);
+        getLogger().debug("SELECTED ITEM: " + selectedItem);
         setTextFieldText(selectedItem, textField, false);
         putCurrentHoursWorkedOfMonthIfPresent(
                 getSelectionModel(
@@ -66,5 +72,17 @@ public class PayrollController {
         textField.setText("");
         getSelectionModel(mouseEvent, true)
                 .select(getSelectionModel(mouseEvent, true).getSelectedIndex() + 1);
+    }
+
+    public void onCalculate(MouseEvent mouseEvent) {
+        getLogger().debug("NAME: " + employeeName.getText());
+        int sum = getHoursWorkedPerMonth().values()
+                .stream()
+                .filter(e -> !e.isEmpty())
+                .mapToInt(Integer::parseInt)
+                .sum();
+
+        getLogger().debug("HOURLY RATE: " + hourlyRate.getText());
+        getLogger().debug("SUM: " + sum);
     }
 }
