@@ -225,9 +225,12 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="996.0" styleClass="buttons-hBox" stylesheets="@../css/payroll.css" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
-                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                    <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>
-                                 <Button mnemonicParsing="false" onMouseClicked="#onCalculate" styleClass="calculate-button" stylesheets="@../css/payroll.css" text="Calculate" HBox.hgrow="ALWAYS" />
+                                 <Button mnemonicParsing="false" onMouseClicked="#onCalculate" styleClass="calculate-button" stylesheets="@../css/payroll.css" text="Calculate" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                       <Insets bottom="5.0" top="5.0" />
+                                    </HBox.margin></Button>
                               </HBox>
                            </VBox>
                         </HBox>
