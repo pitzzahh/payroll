@@ -196,18 +196,4 @@ public class PayrollController {
         hoursWorkedChoiceBox.getSelectionModel().selectFirst();
         absencesChoiceBox.getSelectionModel().selectFirst();
     }
-
-    @FXML
-    public void onHoursWorkedEnter(KeyEvent keyEvent) {
-        if (keyEvent.getCode() == KeyCode.ENTER) {
-            onSaveHoursWorked(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true, true, true, true, true, true, true, null));
-        }
-    }
-
-    @FXML
-    public void onAbsencesEnter(KeyEvent keyEvent) {
-        if (keyEvent.getCode() == KeyCode.ENTER) {
-            onSaveAbsences(new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1, true, true, true, true, true, true, true, true, true, true, null));
-        }
-    }
 }

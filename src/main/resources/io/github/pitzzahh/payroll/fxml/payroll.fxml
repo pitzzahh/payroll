@@ -69,7 +69,7 @@
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField fx:id="hoursWorkedTextField" onKeyTyped="#onHoursWorkedEnter" onMouseEntered="#onMouseEnteredHoursWorkedInput" prefHeight="31.0" prefWidth="125.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hoursWorkedTextField" onMouseEntered="#onMouseEnteredHoursWorkedInput" prefHeight="31.0" prefWidth="125.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -109,7 +109,7 @@
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField fx:id="hoursAbsencesTextField" onKeyTyped="#onAbsencesEnter" onMouseEntered="#onMouseEnteredAbsencesPerMonth" prefHeight="25.0" prefWidth="190.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hoursAbsencesTextField" onMouseEntered="#onMouseEnteredAbsencesPerMonth" prefHeight="25.0" prefWidth="190.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
