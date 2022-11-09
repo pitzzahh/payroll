@@ -13,11 +13,9 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19/javafx-controls-19.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19/javafx-controls-19-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.4.4/logback-classic-1.4.4.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/io/github/pitzzahh/util-classes/1.0.13/util-classes-1.0.13.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19/javafx-base-19-win.jar" path-in-jar="/" />
       <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.4.4" />
       <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.4.4" />
-      <element id="library" level="project" name="Maven: io.github.pitzzahh:util-classes:1.0.13" />
       <element id="library" level="project" name="Maven: org.openjfx:javafx-base:19" />
       <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:19" />
       <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:19" />

@@ -7,19 +7,15 @@ import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.stage.StageStyle;
-import org.slf4j.LoggerFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
-import java.time.Month;
 import java.util.Arrays;
+import java.time.Month;
 
 
 public class Payroll extends Application {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(Payroll.class);
 
     private static Stage stage;
 
@@ -65,15 +61,6 @@ public class Payroll extends Application {
         ChoiceBox<Object> absencesChoiceBox = Util.getChoiceBox(parent, 3);
         absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));
         absencesChoiceBox.getSelectionModel().selectFirst();
-        LOGGER.info("Application Started");
     }
 
-    /**
-     * Gets the logger.
-     * @return the {@code Logger} object.
-     * @see Logger
-     */
-    public static Logger getLogger() {
-        return LOGGER;
-    }
 }

@@ -1,7 +1,6 @@
 package io.github.pitzzahh.payroll.controllers;
 
 
-import static io.github.pitzzahh.payroll.Payroll.getLogger;
 import static io.github.pitzzahh.payroll.util.Util.*;
 import static java.lang.Double.parseDouble;
 import io.github.pitzzahh.payroll.Payroll;
@@ -60,7 +59,6 @@ public class PayrollController {
         Object selectedItem = getSelectionModel(mouseEvent, false)
                 .getSelectedItem();
         TextField textField = getTextField(mouseEvent, false);
-        getLogger().debug("SELECTED ITEM: " + selectedItem);
         setTextFieldText(selectedItem, textField, isAbsences);
         putCurrentHoursWorkedOfMonthIfPresent(
                 getSelectionModel(
@@ -82,7 +80,6 @@ public class PayrollController {
         TextField textField = getTextField(mouseEvent, true);
         String hoursWorked = textField.getText().trim();
         boolean isValidHours = addHours(selectedItem, hoursWorked, false);
-        System.out.println(getHoursWorkedPerMonth());
         textField.setText("");
         if (isValidHours) getSelectionModel(mouseEvent, true)
                     .select(getSelectionModel(mouseEvent, true).getSelectedIndex() + 1);
@@ -99,7 +96,6 @@ public class PayrollController {
         TextField textField = getTextField(mouseEvent, true);
         String absentHours = textField.getText().trim();
         boolean isValidHours = addHours(selectedItem, absentHours, true);
-        System.out.println(getHoursAbsencesPerMonth());
         textField.setText("");
         if (isValidHours) getSelectionModel(mouseEvent, true)
                 .select(getSelectionModel(mouseEvent, true).getSelectedIndex() + 1);
@@ -142,8 +138,6 @@ public class PayrollController {
             tardiness.setText(getPesoSign() + format("%s", formatting().format(totalTardiness)));
 
             final double overTimePay = getOverTimePay().apply(totalSalary, getOverTimeHours());
-
-            getLogger().debug("OVERTIME PAY: " + overTimePay);
 
             final double grossPay = (totalSalary + overTimePay) - totalTardiness;
 

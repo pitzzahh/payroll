@@ -1,22 +1,20 @@
 package io.github.pitzzahh.payroll.util;
 
-import static io.github.pitzzahh.payroll.Payroll.getLogger;
 import io.github.pitzzahh.payroll.Payroll;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import static java.lang.String.format;
-import java.text.NumberFormat;
+import javafx.scene.input.MouseEvent;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import java.util.regex.Pattern;
+import java.text.NumberFormat;
 import javafx.scene.control.*;
 import javafx.scene.Parent;
 import javafx.scene.Node;
 import java.time.Month;
 import java.util.*;
-import java.util.regex.Pattern;
 
 /**
  * Utility class
@@ -36,7 +34,6 @@ public interface Util {
         BorderPane centerPaneCenterPane = (BorderPane) borderPaneCenterPane.getCenter();
         VBox centerVBox = (VBox) centerPaneCenterPane.getCenter(); // center
         Node node = centerVBox.getChildren().get(index);
-        getLogger().debug(node instanceof  HBox ? "Found CheckBox" : "Node is NOT HBox");
         assert node instanceof HBox;
         return (ChoiceBox<Object>) ((HBox)node).getChildren().get(1);
     }
@@ -92,7 +89,6 @@ public interface Util {
                     "-fx-font-family: Jetbrains Mono;" +
                     "-fx-font-size: 15px;");
             tooltip.show(Payroll.getStage().getScene().getWindow());
-            getLogger().error(format("HOURS ON MONTH %s is %s IS NOT A NUMBER", month, hours));
             return false;
         }
     }
@@ -127,7 +123,6 @@ public interface Util {
                 .filter(e -> e.getKey().equals(selectedItem))
                 .map(Map.Entry::getValue)
                 .findAny();
-        getLogger().debug("HOURS PRESENT: " + hours.isPresent());
         if (hours.isPresent()) textField.setText(hours.get());
         else textField.setText("");
     }
