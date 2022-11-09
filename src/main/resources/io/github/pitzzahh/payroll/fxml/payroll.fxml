@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="627.0" minWidth="1016.0" prefHeight="627.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
+<AnchorPane minHeight="627.0" minWidth="1016.0" prefHeight="627.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
    <BorderPane layoutX="35.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <top>
          <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="600.0" styleClass="header" stylesheets="@../css/payroll.css" BorderPane.alignment="CENTER">
