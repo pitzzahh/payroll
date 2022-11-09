@@ -3,8 +3,6 @@ package io.github.pitzzahh.payroll.util;
 import io.github.pitzzahh.payroll.application.Payroll;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.input.MouseEvent;
-
-import java.time.DayOfWeek;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -15,7 +13,6 @@ import java.text.NumberFormat;
 import javafx.scene.control.*;
 import javafx.scene.Parent;
 import javafx.scene.Node;
-import java.time.Month;
 import java.util.*;
 
 /**
@@ -62,7 +59,7 @@ public interface Util {
 
     static void setTextFieldText(Object selectedItem, TextField textField, boolean isAbsences) {
         String prompt = isAbsences ? "Enter Number of Absent Hours On " + selectedItem : "Enter Hours Worked On " + selectedItem;
-        textField.setPromptText(prompt);
+        if (selectedItem != null) textField.setPromptText(prompt);
     }
 
     static boolean addHours(Object month, String hours, boolean isAbsences) {

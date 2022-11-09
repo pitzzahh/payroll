@@ -84,12 +84,12 @@
                            <VBox.margin>
                               <Insets left="10.0" top="5.0" />
                            </VBox.margin>
-                           <Label prefHeight="30.0" prefWidth="262.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hourly Rate">
+                           <Label prefHeight="30.0" prefWidth="223.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hourly Rate">
                               <HBox.margin>
                                  <Insets />
                               </HBox.margin>
                            </Label>
-                           <TextField fx:id="hourlyRate" prefHeight="31.0" prefWidth="812.0" promptText="Enter hourly rate" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hourlyRate" promptText="Enter hourly rate" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets left="-0.0" right="10.0" />
                               </HBox.margin>
@@ -227,13 +227,13 @@
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>
-                                 <Button mnemonicParsing="false" onMouseClicked="#onCalculate" prefHeight="43.0" prefWidth="85.0" stylesheets="@../css/payroll.css" text="Calculate" HBox.hgrow="ALWAYS">
+                                 <Button mnemonicParsing="false" onMouseClicked="#onCalculate" prefHeight="58.0" prefWidth="85.0" stylesheets="@../css/payroll.css" text="Calculate" HBox.hgrow="ALWAYS">
                                     <HBox.margin>
-                                       <Insets right="10.0" />
+                                       <Insets right="5.0" />
                                     </HBox.margin></Button>
-                                 <Button fx:id="resetButton" layoutX="466.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#onReset" prefHeight="43.0" prefWidth="85.0" stylesheets="@../css/payroll.css" text="Reset">
+                                 <Button fx:id="resetButton" layoutX="466.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#onReset" prefHeight="59.0" prefWidth="85.0" stylesheets="@../css/payroll.css" text="Reset" HBox.hgrow="ALWAYS">
                                     <HBox.margin>
-                                       <Insets left="10.0" />
+                                       <Insets left="5.0" />
                                     </HBox.margin>
                                  </Button>
                               </HBox>

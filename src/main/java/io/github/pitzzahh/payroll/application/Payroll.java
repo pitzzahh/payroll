@@ -7,6 +7,8 @@ import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.StageStyle;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,13 +59,13 @@ public class Payroll extends Application {
         stage.toFront();
         stage.setTitle("Payroll Application");
         stage.show();
-
+        stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
+        });
         ChoiceBox<Object> hoursWorkedChoiceBox = Util.getChoiceBox(parent, 1);
         hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(DayOfWeek.values())));
-        hoursWorkedChoiceBox.getSelectionModel().selectFirst();
         ChoiceBox<Object> absencesChoiceBox = Util.getChoiceBox(parent, 3);
         absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));
-        absencesChoiceBox.getSelectionModel().selectFirst();
     }
 
 }
