@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="payroll:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/payroll_jar</output-path>
+    <root id="archive" name="payroll.jar">
+      <element id="module-output" name="payroll" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19/javafx-base-19-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19/javafx-base-19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19/javafx-fxml-19-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19/javafx-controls-19-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19/javafx-graphics-19-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19/javafx-controls-19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19/javafx-graphics-19.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19/javafx-fxml-19.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:19" />
+      <element id="dir-copy" path="C:/Program Files/Java/jdk-11.0.17" />
+    </root>
+  </artifact>
+</component>
