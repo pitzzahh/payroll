@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="627.0" minWidth="1016.0" prefHeight="627.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
+<AnchorPane minHeight="627.0" minWidth="1016.0" prefHeight="627.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.pitzzahh.payroll.controllers.PayrollController">
    <BorderPane layoutX="35.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <top>
          <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="600.0" styleClass="header" stylesheets="@../css/payroll.css" BorderPane.alignment="CENTER">
@@ -40,16 +40,16 @@
                <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                   <center>
                      <VBox prefHeight="335.0" prefWidth="383.0" styleClass="field-vbox" stylesheets="@../css/payroll.css" BorderPane.alignment="CENTER">
-                        <HBox alignment="CENTER_LEFT" prefHeight="20.0" prefWidth="380.0">
+                        <HBox alignment="CENTER_LEFT">
                            <VBox.margin>
                               <Insets left="10.0" top="5.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" prefWidth="254.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Employee Name">
+                           <Label prefHeight="31.0" prefWidth="225.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Employee Name">
                               <HBox.margin>
                                  <Insets />
                               </HBox.margin>
                            </Label>
-                           <TextField fx:id="employeeNameInput" prefHeight="25.0" prefWidth="231.0" promptText="Enter employee name" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="employeeNameInput" promptText="Enter employee name" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -59,7 +59,7 @@
                            <VBox.margin>
                               <Insets left="10.0" top="5.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hours Worked Per Month">
+                           <Label prefHeight="39.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hours Worked Per Day">
                               <HBox.margin>
                                  <Insets />
                               </HBox.margin>
@@ -69,7 +69,7 @@
                                  <Insets right="5.0" />
                               </HBox.margin>
                            </ChoiceBox>
-                           <TextField fx:id="hoursWorkedTextField" onMouseEntered="#onMouseEnteredHoursWorkedInput" prefHeight="31.0" prefWidth="125.0" promptText="Select Month First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hoursWorkedTextField" onMouseEntered="#onMouseEnteredHoursWorkedInput" prefHeight="31.0" prefWidth="125.0" promptText="Select Day First" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
                                  <Insets right="10.0" />
                               </HBox.margin>
@@ -84,14 +84,14 @@
                            <VBox.margin>
                               <Insets left="10.0" top="5.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" prefWidth="254.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hourly Rate">
+                           <Label prefHeight="30.0" prefWidth="262.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Hourly Rate">
                               <HBox.margin>
                                  <Insets />
                               </HBox.margin>
                            </Label>
-                           <TextField fx:id="hourlyRate" prefHeight="25.0" prefWidth="190.0" promptText="Enter hourly rate" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
+                           <TextField fx:id="hourlyRate" prefHeight="31.0" prefWidth="812.0" promptText="Enter hourly rate" stylesheets="@../css/payroll.css" HBox.hgrow="ALWAYS">
                               <HBox.margin>
-                                 <Insets right="10.0" />
+                                 <Insets left="-0.0" right="10.0" />
                               </HBox.margin>
                            </TextField>
                         </HBox>
@@ -99,9 +99,9 @@
                            <VBox.margin>
                               <Insets left="10.0" top="5.0" />
                            </VBox.margin>
-                           <Label prefHeight="39.0" prefWidth="241.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Absences Per Month">
+                           <Label prefHeight="39.0" prefWidth="223.0" styleClass="input-label" stylesheets="@../css/payroll.css" text="Absences Per Month">
                               <HBox.margin>
-                                 <Insets right="11.0" />
+                                 <Insets />
                               </HBox.margin>
                            </Label>
                            <ChoiceBox prefHeight="31.0" prefWidth="166.0" HBox.hgrow="ALWAYS">

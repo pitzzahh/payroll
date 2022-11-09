@@ -1,6 +1,7 @@
-package io.github.pitzzahh.payroll;
+package io.github.pitzzahh.payroll.application;
 
 import static java.util.Objects.requireNonNull;
+import io.github.pitzzahh.payroll.Launcher;
 import io.github.pitzzahh.payroll.util.Util;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
@@ -11,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.time.Month;
 
@@ -45,10 +48,10 @@ public class Payroll extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        Parent parent = FXMLLoader.load(requireNonNull(Payroll.class.getResource("fxml/payroll.fxml"), "cannot find payroll.fxml file"));
+        Parent parent = FXMLLoader.load(requireNonNull(Launcher.class.getResource("fxml/payroll.fxml"), "cannot find payroll.fxml file"));
         Scene scene = new Scene(parent);
         stage.initStyle(StageStyle.UNIFIED);
-        stage.getIcons().add(new Image(requireNonNull(Payroll.class.getResourceAsStream("img/ico.png"), "Icon not found")));
+        stage.getIcons().add(new Image(requireNonNull(Launcher.class.getResourceAsStream("img/ico.png"), "Icon not found")));
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.toFront();
@@ -56,7 +59,7 @@ public class Payroll extends Application {
         stage.show();
 
         ChoiceBox<Object> hoursWorkedChoiceBox = Util.getChoiceBox(parent, 1);
-        hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));
+        hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(DayOfWeek.values())));
         hoursWorkedChoiceBox.getSelectionModel().selectFirst();
         ChoiceBox<Object> absencesChoiceBox = Util.getChoiceBox(parent, 3);
         absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));

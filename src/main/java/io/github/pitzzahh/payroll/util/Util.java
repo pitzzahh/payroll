@@ -1,8 +1,10 @@
 package io.github.pitzzahh.payroll.util;
 
-import io.github.pitzzahh.payroll.Payroll;
+import io.github.pitzzahh.payroll.application.Payroll;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.input.MouseEvent;
+
+import java.time.DayOfWeek;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -60,19 +62,9 @@ public interface Util {
 
     static void setTextFieldText(Object selectedItem, TextField textField, boolean isAbsences) {
         String prompt = isAbsences ? "Enter Number of Absent Hours On " + selectedItem : "Enter Hours Worked On " + selectedItem;
-        if (selectedItem.equals(Month.JANUARY)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.FEBRUARY)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.MARCH)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.APRIL)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.MAY)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.JUNE)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.JULY)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.AUGUST)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.SEPTEMBER)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.OCTOBER)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.NOVEMBER)) textField.setPromptText(prompt);
-        else if (selectedItem.equals(Month.DECEMBER)) textField.setPromptText(prompt);
+        textField.setPromptText(prompt);
     }
+
     static boolean addHours(Object month, String hours, boolean isAbsences) {
         boolean isNumber = isWholeNumber.or(isDecimalNumber).test(hours.trim());
         if (isNumber || hours.trim().isEmpty()) {

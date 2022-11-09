@@ -3,7 +3,7 @@ package io.github.pitzzahh.payroll.controllers;
 
 import static io.github.pitzzahh.payroll.util.Util.*;
 import static java.lang.Double.parseDouble;
-import io.github.pitzzahh.payroll.Payroll;
+import io.github.pitzzahh.payroll.application.Payroll;
 import static java.lang.String.format;
 import javafx.scene.input.MouseEvent;
 import java.util.regex.Pattern;
