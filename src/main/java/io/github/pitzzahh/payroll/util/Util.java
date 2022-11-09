@@ -1,15 +1,13 @@
 package io.github.pitzzahh.payroll.util;
 
-import io.github.pitzzahh.util.utilities.validation.Validator;
 import static io.github.pitzzahh.payroll.Payroll.getLogger;
 import io.github.pitzzahh.payroll.Payroll;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import static java.lang.String.format;
-
 import java.text.NumberFormat;
 import java.util.function.BiFunction;
-import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -18,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Node;
 import java.time.Month;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * Utility class
@@ -78,7 +77,7 @@ public interface Util {
         else if (selectedItem.equals(Month.DECEMBER)) textField.setPromptText(prompt);
     }
     static boolean addHours(Object month, String hours, boolean isAbsences) {
-        boolean isNumber = Validator.isWholeNumber().or(Validator.isDecimalNumber()).test(hours.trim());
+        boolean isNumber = isWholeNumber.or(isDecimalNumber).test(hours.trim());
         if (isNumber || hours.trim().isEmpty()) {
             if (isAbsences) Fields.hoursAbsences.put(month, hours);
             else Fields.hoursWorkedPerMonth.put(month, hours);
@@ -129,7 +128,8 @@ public interface Util {
                 .map(Map.Entry::getValue)
                 .findAny();
         getLogger().debug("HOURS PRESENT: " + hours.isPresent());
-        hours.ifPresentOrElse(textField::setText, () -> textField.setText(""));
+        if (hours.isPresent()) textField.setText(hours.get());
+        else textField.setText("");
     }
 
     static int getOverTimeHours() {
@@ -157,6 +157,10 @@ public interface Util {
     static NumberFormat formatting() {
         return Fields.NUMBER_FORMAT.get();
     }
+
+    Predicate<String> isWholeNumber = input -> Pattern.compile("^\\d+$").matcher(input).find();
+    Predicate<String> isDecimalNumber = input -> Pattern.compile("^(\\d+\\.\\d+|\\.\\d+|0\\.\\d+)$").matcher(input).find();
+
 }
 class Fields {
     static Map<Object, String> hoursWorkedPerMonth = new Hashtable<>();

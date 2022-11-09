@@ -2,7 +2,6 @@ package io.github.pitzzahh.payroll;
 
 import static java.util.Objects.requireNonNull;
 import io.github.pitzzahh.payroll.util.Util;
-import io.github.pitzzahh.util.utilities.Print;
 import javafx.collections.FXCollections;
 import javafx.application.Application;
 import javafx.scene.control.ChoiceBox;
@@ -14,9 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
-
 import java.time.Month;
-import java.util.List;
+import java.util.Arrays;
 
 
 public class Payroll extends Application {
@@ -62,10 +60,10 @@ public class Payroll extends Application {
         stage.show();
 
         ChoiceBox<Object> hoursWorkedChoiceBox = Util.getChoiceBox(parent, 1);
-        hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(List.of(Month.values())));
+        hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));
         hoursWorkedChoiceBox.getSelectionModel().selectFirst();
         ChoiceBox<Object> absencesChoiceBox = Util.getChoiceBox(parent, 3);
-        absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(List.of(Month.values())));
+        absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));
         absencesChoiceBox.getSelectionModel().selectFirst();
         LOGGER.info("Application Started");
     }
