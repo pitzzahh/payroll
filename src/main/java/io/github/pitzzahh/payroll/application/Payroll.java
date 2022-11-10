@@ -64,6 +64,7 @@ public class Payroll extends Application {
         stage.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
         });
+
         ChoiceBox<Object> hoursWorkedChoiceBox = Util.getChoiceBox(parent, 1);
 
         List<DayOfWeek> weekdays = Arrays.stream(DayOfWeek.values())
@@ -71,8 +72,11 @@ public class Payroll extends Application {
                 .collect(Collectors.toList());
 
         hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(weekdays));
+        hoursWorkedChoiceBox.getSelectionModel().selectFirst();
+
         ChoiceBox<Object> absencesChoiceBox = Util.getChoiceBox(parent, 3);
         absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));
+        absencesChoiceBox.getSelectionModel().selectFirst();
     }
 
 }
