@@ -131,7 +131,7 @@ public class PayrollController {
                     .mapToInt(Integer::parseInt)
                     .sum();
 
-            absences.setText(format("%d hours", totalAbsences));
+            absences.setText(format(totalAbsences == 0 ? "No Absences" : totalAbsences == 1 ? "%d hour" : "%d hours", totalAbsences));
 
             double totalTardiness = totalHourlyRate.isEmpty() ? 0 : (hourlyRate * totalAbsences);
 

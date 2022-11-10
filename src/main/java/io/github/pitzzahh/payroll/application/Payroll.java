@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import java.time.DayOfWeek;
 import java.util.Arrays;
 import java.time.Month;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class Payroll extends Application {
@@ -63,7 +65,12 @@ public class Payroll extends Application {
             if (KeyCode.F11.equals(event.getCode())) getStage().setFullScreen(!getStage().isFullScreen());
         });
         ChoiceBox<Object> hoursWorkedChoiceBox = Util.getChoiceBox(parent, 1);
-        hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(DayOfWeek.values())));
+
+        List<DayOfWeek> weekdays = Arrays.stream(DayOfWeek.values())
+                .filter(e -> e.ordinal() <= 4)
+                .collect(Collectors.toList());
+
+        hoursWorkedChoiceBox.getItems().addAll(FXCollections.observableArrayList(weekdays));
         ChoiceBox<Object> absencesChoiceBox = Util.getChoiceBox(parent, 3);
         absencesChoiceBox.getItems().addAll(FXCollections.observableArrayList(Arrays.asList(Month.values())));
     }
