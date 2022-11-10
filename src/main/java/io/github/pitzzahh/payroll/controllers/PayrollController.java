@@ -137,7 +137,7 @@ public class PayrollController {
 
             tardiness.setText(getPesoSign() + format("%s", formatting().format(totalTardiness)));
 
-            final double overTimePay = getOverTimePay().apply(totalSalary, getOverTimeHours());
+            final double overTimePay = getOverTimePay().apply(hourlyRate, getOverTimeHours());
 
             final double grossPay = (totalSalary + overTimePay) - totalTardiness;
 
