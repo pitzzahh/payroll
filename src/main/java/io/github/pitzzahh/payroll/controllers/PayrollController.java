@@ -121,7 +121,7 @@ public class PayrollController {
         if (isValidHourlyRate) {
             final double hourlyRate = parseDouble(totalHourlyRate);
 
-            double totalSalary = hourlyRate * hoursWorked;
+            double totalSalary = (hourlyRate * hoursWorked) * 4;
 
             salary.setText(getPesoSign() + format("%s", formatting().format(totalSalary)));
 
@@ -133,7 +133,7 @@ public class PayrollController {
 
             absences.setText(format("%d hours", totalAbsences));
 
-            double totalTardiness = totalHourlyRate.isEmpty() ? 0 : (hourlyRate * (totalAbsences / 60F));
+            double totalTardiness = totalHourlyRate.isEmpty() ? 0 : (hourlyRate * totalAbsences);
 
             tardiness.setText(getPesoSign() + format("%s", formatting().format(totalTardiness)));
 
