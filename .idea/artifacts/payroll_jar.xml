@@ -11,7 +11,7 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19/javafx-controls-19.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19/javafx-graphics-19-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19/javafx-base-19.jar" path-in-jar="/" />
-      <element id="dir-copy" path="C:/Program Files/Java/jdk-11.0.17" />
+      <element id="dir-copy" path="$USER_HOME$/Documents/jre-9.0.4" />
     </root>
   </artifact>
 </component>
