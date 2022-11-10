@@ -7,7 +7,7 @@
 
     <groupId>io.github.pitzzahh</groupId>
     <artifactId>payroll</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
