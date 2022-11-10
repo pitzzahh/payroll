@@ -66,7 +66,7 @@ public interface Util {
         boolean isNumber = isWholeNumber.or(isDecimalNumber).test(hours.trim());
         if (isNumber || hours.trim().isEmpty()) {
             if (isAbsences) Fields.hoursAbsences.put(month, hours);
-            else Fields.hoursWorkedPerMonth.put(month, hours);
+            else Fields.hoursWorkedPerDay.put(month, hours);
             return true;
         }
         else {
@@ -93,7 +93,7 @@ public interface Util {
     }
 
     static Map<Object, String> getHoursWorkedPerMonth() {
-        return Fields.hoursWorkedPerMonth;
+        return Fields.hoursWorkedPerDay;
     }
 
     static Map<Object, String> getHoursAbsencesPerMonth() {
@@ -107,7 +107,7 @@ public interface Util {
                 .filter(e -> e.getKey().equals(selectedItem))
                 .map(Map.Entry::getValue)
                 .findAny();
-        else hours = Fields.hoursWorkedPerMonth.entrySet()
+        else hours = Fields.hoursWorkedPerDay.entrySet()
                 .stream()
                 .filter(e -> e.getKey().equals(selectedItem))
                 .map(Map.Entry::getValue)
@@ -117,7 +117,7 @@ public interface Util {
     }
 
     static int getOverTimeHours() {
-        return Fields.hoursWorkedPerMonth.values()
+        return Fields.hoursWorkedPerDay.values()
                 .stream()
                 .filter(s -> !s.isEmpty())
                 .mapToInt(Integer::parseInt)
@@ -147,7 +147,7 @@ public interface Util {
 
 }
 class Fields {
-    static Map<Object, String> hoursWorkedPerMonth = new Hashtable<>();
+    static Map<Object, String> hoursWorkedPerDay = new Hashtable<>();
     static Map<Object, String> hoursAbsences = new Hashtable<>();
 
     static final Supplier<Double> DEDUCTIONS = () -> 600.0;
