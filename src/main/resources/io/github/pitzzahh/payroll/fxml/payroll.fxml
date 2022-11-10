@@ -131,7 +131,7 @@
                                  </VBox.margin>
                                  <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Employee Name:">
                                     <padding>
-                                       <Insets left="35.0" />
+                                       <Insets left="108.0" />
                                     </padding>
                                  </Label>
                                  <Label fx:id="employeeName" styleClass="output" stylesheets="@../css/payroll.css">
@@ -147,7 +147,7 @@
                                  <padding>
                                     <Insets left="50.0" />
                                  </padding>
-                                 <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Salary Per Month:" />
+                                 <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Basic Salary Per Month:" />
                                  <Label fx:id="salary" styleClass="output" stylesheets="@../css/payroll.css">
                                     <HBox.margin>
                                        <Insets left="10.0" />
@@ -162,7 +162,7 @@
                                  </VBox.margin>
                                  <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Total Absences:">
                                     <padding>
-                                       <Insets left="22.0" />
+                                       <Insets left="95.0" />
                                     </padding>
                                  </Label>
                                  <Label fx:id="absences" styleClass="output" stylesheets="@../css/payroll.css">
@@ -179,7 +179,7 @@
                                  </VBox.margin>
                                  <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Total Tardiness:">
                                     <padding>
-                                       <Insets left="10.0" />
+                                       <Insets left="85.0" />
                                     </padding>
                                  </Label>
                                  <Label fx:id="tardiness" styleClass="output" stylesheets="@../css/payroll.css">
@@ -196,7 +196,7 @@
                                  </VBox.margin>
                                  <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Gross Salary:">
                                     <padding>
-                                       <Insets left="45.0" />
+                                       <Insets left="120.0" />
                                     </padding>
                                  </Label>
                                  <Label fx:id="grossSalary" styleClass="output" stylesheets="@../css/payroll.css">
@@ -214,7 +214,7 @@
                                  </VBox.margin>
                                  <Label styleClass="result-labels" stylesheets="@../css/payroll.css" text="Net Pay:">
                                     <padding>
-                                       <Insets left="110.0" />
+                                       <Insets left="180.0" />
                                     </padding>
                                  </Label>
                                  <Label fx:id="netPay" styleClass="output" stylesheets="@../css/payroll.css">
